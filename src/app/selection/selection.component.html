@@ -1,0 +1,15 @@
+
+    
+        <label>Liste contacts</label>
+        <select *ngIf = "selectionActive" (change)='surSelect($event.target.value)'>
+            <!--On va boucler sur chacun des éléments du Array contacts-->
+            <option *ngFor='let contact of contacts' [value]='contact.id'>{{contact.nom}}</option>
+        </select>
+        <hr>
+        <ul *ngIf = "selectionActive">
+            <li *ngFor='let contact of contacts' (click)='surSelect(contact.id)'>{{contact.id}} :{{contact.nom}}</li>
+        </ul>
+    
+   
+        
+    

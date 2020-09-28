@@ -1,0 +1,44 @@
+<button (click)='modeAjouter()'>Ajouter</button>
+
+    <article class='col-6 droite' *ngIf='contact'>
+      <h2>Détails</h2>
+      <label>Nom :{{contact.nom}}</label><br>
+      <label>Tél :{{contact.tel}}</label>
+      <img width=180 alt='Contact' [src]="'assets/images/contacts/Contact' + contact.id + '.PNG'">
+      <button (click)='modeModifier()'>Modifier</button>
+      <button (click)='modeSupprimer()'>Supprimer</button>
+    </article>
+
+    <article *ngIf='contexteAjoute' class='col-3 droite'>
+      <h2>Ajout d'un contact</h2>
+      <label>nom:</label>
+      <input #nomContact (keyUp.Enter)='assigneNom(nomContact.value)'
+                         (blur)='assigneNom(nomContact.value)'><br>
+      <label>tél:</label>
+      <input #telContact (keyUp.Enter)='assigneTel(telContact.value)'
+                         (blur)='assigneTel(telContact.value)'>
+    <br>
+    <button *ngIf='nouveauContactPret' (click)='confirmerAjout()'>confirmer</button>
+    <button (click)='annuler()'>annuler</button>
+    </article>
+
+    <article *ngIf='contexteModifier' class='col-3 droite'>
+      <h2>Modification de {{contact.nom}}</h2>
+      <label>nom:</label>
+      <input #nomContact (keyUp.Enter)='modifieNom(nomContact.value)'
+                         (blur)='modifieNom(nomContact.value)'
+                         [value]='nomContactMod'><br>
+      <label>tél:</label>
+      <input #telContact (keyUp.Enter)='modifieTel(telContact.value)'
+                         (blur)='modifieTel(telContact.value)'
+                         [value]='telContactMod'>
+    <br>
+    <button *ngIf='modifieContactPret' (click)='confirmerModif()'>Appliquer</button>
+    <button (click)='annuler()'>annuler</button>
+    </article>
+
+    <article *ngIf='contexteSupprimer' class="col-3 droite">
+      <h2>Voulez vous vraiment supprimer {{contact.nom}}</h2>
+      <button (click)='confirmerSupprimer()'>Supprimer</button>
+      <button (click)='annuler()'>annuler</button>
+    </article>

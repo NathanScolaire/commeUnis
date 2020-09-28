@@ -1,0 +1,14 @@
+#fond{
+    background-color: blue;
+    color:yellow;
+}
+
+#gauche {
+    background-color: pink;
+    color:black;
+}
+
+.droite {
+background-color: black;
+color:white;
+}
