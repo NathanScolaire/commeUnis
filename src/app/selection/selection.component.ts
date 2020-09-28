@@ -5,7 +5,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Contact } from './../modele/contact';
-import { ListeContacts } from './../modele/contacts_bidon';
+import { ContactService } from '../contact.service';
 
 @Component({
   selector: 'app-selection',
@@ -22,14 +22,14 @@ export class SelectionComponent implements OnInit {
 //------------------------------------
 //
 //------------------------------------
-  constructor() { 
-    this.contacts = ListeContacts;
+  constructor(private contactService:ContactService) { 
   }
 
 //------------------------------------
 //
 //------------------------------------
   ngOnInit(): void {
+    this.contacts = this.contactService.recupererContacts();
   }
 
 //------------------------------------

@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { BanniereComponent } from './banniere/banniere.component';
 import { SelectionComponent } from './selection/selection.component';
 import { ContactGestionComponent } from './contact-gestion/contact-gestion.component';
+import { RetroactionComponent } from './retroaction/retroaction.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BanniereComponent,
     SelectionComponent,
-    ContactGestionComponent
+    ContactGestionComponent,
+    RetroactionComponent
   ],
   imports: [
     BrowserModule

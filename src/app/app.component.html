@@ -5,12 +5,12 @@
     <app-selection #sel class="col-3" id="gauche"></app-selection>
 
     <app-contact-gestion #cg class="col-9 droite"  [contact]='sel.contactSelectionne'
-    
     (changementContext) = "sel.surChangementContext($event)" 
     (suppressionContact) = "sel.surSuppressionContact($event)"
     (ajoutContact) = "sel.surAjoutContact($event)">
-  
   </app-contact-gestion>
+
+  <app-retroaction></app-retroaction>
 
   </section>
   
