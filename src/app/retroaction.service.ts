@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class RetroactionService {
 
-  messages:String[];
+  messages:String[] = new Array();
 
   constructor() { }
   

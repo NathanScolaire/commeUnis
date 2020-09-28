@@ -1,1 +1,6 @@
-<p id='retroaction'>Les messages seront affichés ici.</p>
+<div class='col-1'></div>
+
+<div *ngIf='retroactionService.messages.length'>
+    <p *ngFor='let message of retroactionService.messages'>{{ message }}</p>
+    <button (click)='retroactionService.vider()'>Vider</button>
+</div>

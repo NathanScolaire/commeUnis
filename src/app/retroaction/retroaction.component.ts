@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RetroactionService } from '../retroaction.service';
 
 @Component({
   selector: 'app-retroaction',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RetroactionComponent implements OnInit {
 
-  constructor() { }
+  constructor(public retroactionService:RetroactionService) { }
 
   ngOnInit(): void {
+    
   }
+
 
 }

@@ -5,6 +5,7 @@
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Contact } from './../modele/contact';
+import { RetroactionService } from '../retroaction.service';
 
 @Component({
   selector: 'app-contact-gestion',
@@ -18,7 +19,7 @@ export class ContactGestionComponent implements OnInit {
   @Output() suppressionContact: EventEmitter<number> = new EventEmitter<number>();
   @Output() ajoutContact: EventEmitter<Contact> = new EventEmitter<Contact>();
 
-  constructor() { }
+  constructor(private retroactionService:RetroactionService) { }
 
   ngOnInit(): void {
   }
@@ -42,7 +43,8 @@ export class ContactGestionComponent implements OnInit {
   // Lorsque l'utilisateur click sur le button ajouter
   //--------------------------------------------------
   modeAjouter() {
-    //alert('ajout');
+    this.retroactionService.ajout('En mode ajouter');
+
     this.changementContext.emit("AJOUTER");
     this.contexteAjoute = true;
 
@@ -56,6 +58,7 @@ export class ContactGestionComponent implements OnInit {
   // Lorsque l'utilisateur click sur le button modifier
   //--------------------------------------------------
   modeModifier() {
+    this.retroactionService.ajout('En mode modifier');
     this.changementContext.emit("MODIFIER");
     this.contexteModifier = true;
 
@@ -70,6 +73,8 @@ export class ContactGestionComponent implements OnInit {
   // Lorsque l'utilisateur click sur le button supprimer
   //--------------------------------------------------
   modeSupprimer() {
+    this.retroactionService.ajout('En mode supprimer');
+
     this.changementContext.emit("SUPPRIMER");
     this.contexteSupprimer = true;
 
@@ -89,6 +94,7 @@ export class ContactGestionComponent implements OnInit {
       this.nomNeoContact.length > 0) {
       this.nouveauContactPret = true;
     } else {
+      this.retroactionService.ajout('Champ nom ou tel vide');
       this.nouveauContactPret = false;
     }
   }
@@ -99,6 +105,7 @@ export class ContactGestionComponent implements OnInit {
       this.telNeoContact.length > 0) {
       this.nouveauContactPret = true;
     } else {
+      this.retroactionService.ajout('Champ nom ou tel vide');
       this.nouveauContactPret = false;
     }
   }
@@ -112,6 +119,7 @@ export class ContactGestionComponent implements OnInit {
       this.nomContactMod.length > 0) {
       this.modifieContactPret = true;
     } else {
+      this.retroactionService.ajout('Champ nom ou tel vide');
       this.modifieContactPret = false;
     }
   }
@@ -125,6 +133,7 @@ export class ContactGestionComponent implements OnInit {
       this.telContactMod.length > 0) {
       this.modifieContactPret = true;
     } else {
+      this.retroactionService.ajout('Champ nom ou tel vide');
       this.modifieContactPret = false;
     }
   }
@@ -148,6 +157,8 @@ export class ContactGestionComponent implements OnInit {
   confirmerAjout() {
     let neoContact: Contact = new Contact(0, this.nomNeoContact, this.telNeoContact);
  
+    this.retroactionService.ajout('Nouveau contact dans la liste: ' + neoContact.nom);
+
     this.contact = neoContact;
     this.ajoutContact.emit(this.contact);
     this.contexteAjoute = false;
@@ -160,6 +171,9 @@ export class ContactGestionComponent implements OnInit {
   // 
   //-----------------------------------------------------------------------------------------------
   confirmerModif() {
+
+    this.retroactionService.ajout('Modification de: ' + this.contact.nom);
+
     this.contact.tel = this.telContactMod;
     this.contact.nom = this.nomContactMod;
     this.contexteModifier = false;
@@ -171,6 +185,8 @@ export class ContactGestionComponent implements OnInit {
   // 
   //-----------------------------------------------------------------------------------------------
   confirmerSupprimer() {
+
+    this.retroactionService.ajout('Suppression de: ' + this.contact.nom);
 
     this.contexteSupprimer = false;
     this.annuler();
