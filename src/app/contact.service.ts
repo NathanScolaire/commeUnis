@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ListeContacts } from './modele/contacts_bidon';
 import { Contact } from './modele/contact';
 import { RetroactionService } from './retroaction.service';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { Observable, of } from 'rxjs'; // Rx =  reactive x .js pour programmer des fonctionnalités réactives (asynchrone)
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,10 @@ export class ContactService {
 
   }
 
-  recupererContacts():Contact[]
+  recupererContacts():Observable<Contact[]>
   {
-    this.retroactionService.ajout('Récupération des contacts');
-    
-    alert("Ajout d'un message");
-
-    return ListeContacts;
+    this.retroactionService.ajout('Récupération asynchrone des contacts');
+    return of(ListeContacts);
   }
 
 }

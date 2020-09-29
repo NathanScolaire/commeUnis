@@ -26,10 +26,10 @@ export class SelectionComponent implements OnInit {
   }
 
 //------------------------------------
-//
+// Initialisation de l'objet
 //------------------------------------
-  ngOnInit(): void {
-    this.contacts = this.contactService.recupererContacts();
+  ngOnInit(): void {  
+    this.contactService.recupererContacts().subscribe(contacts => this.contacts = contacts);
   }
 
 //------------------------------------

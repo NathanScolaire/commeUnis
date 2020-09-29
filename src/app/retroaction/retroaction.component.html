@@ -1,6 +1,6 @@
 <div class='col-1'></div>
 
-<div *ngIf='retroactionService.messages.length'>
-    <p *ngFor='let message of retroactionService.messages'>{{ message }}</p>
+<div id="retroaction" *ngIf='retroactionService.messages.length'>
+    <article *ngFor='let message of retroactionService.messages'>{{ message }}</article>
     <button (click)='retroactionService.vider()'>Vider</button>
 </div>
