@@ -6,6 +6,7 @@ import { BanniereComponent } from './banniere/banniere.component';
 import { SelectionComponent } from './selection/selection.component';
 import { ContactGestionComponent } from './contact-gestion/contact-gestion.component';
 import { RetroactionComponent } from './retroaction/retroaction.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RetroactionComponent } from './retroaction/retroaction.component';
     RetroactionComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
